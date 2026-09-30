@@ -1,11 +1,9 @@
 // Hermes Vox — a small canvas cousin of the app's being for the hero.
 // It walks one conversational turn: rest -> thinking -> recalling -> speaking,
-// morphing between shapes the way the real (OpenGL) being does, with the words
-// typed below in the app's monospace "voice". Static under reduced motion; paused
-// when off-screen or the tab is hidden.
+// morphing between shapes the way the real (OpenGL) being does. Static under
+// reduced motion; paused when off-screen or the tab is hidden.
 (() => {
   const canvas = document.getElementById("being-canvas");
-  const crawl = document.getElementById("crawl");
   if (!canvas || !canvas.getContext) return;
   const ctx = canvas.getContext("2d");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -81,11 +79,11 @@
 
   // One turn, as the app lives it. Colours from the app's state palette.
   const SCRIPT = [
-    { shape: "aura", rgb: [0, 229, 255], hold: 3.6, text: "" },
-    { shape: "radar", rgb: [251, 176, 64], hold: 3.4, text: "// thinking" },
-    { shape: "constellation", rgb: [251, 160, 70], hold: 3.4, text: "// tool: memory" },
-    { shape: "soundwave", rgb: [167, 139, 250], hold: 6.2, text: "The tide at Bar Harbor turns at 4:12 this afternoon, so you have a little over two hours." },
-    { shape: "iris", rgb: [0, 229, 255], hold: 3.4, text: "" },
+    { shape: "aura", rgb: [0, 229, 255], hold: 3.6 },
+    { shape: "radar", rgb: [251, 176, 64], hold: 3.4 },
+    { shape: "constellation", rgb: [251, 160, 70], hold: 3.4 },
+    { shape: "soundwave", rgb: [167, 139, 250], hold: 6.2 },
+    { shape: "iris", rgb: [0, 229, 255], hold: 3.4 },
   ];
   const MORPH = 1.1;
 
@@ -135,12 +133,6 @@
     ctx.fillStyle = g; ctx.fillRect(cx - scale, cy - scale, scale * 2, scale * 2);
     ctx.globalCompositeOperation = "source-over";
 
-    // the words: typed at speaking pace, like the crawl locked to the voice
-    if (crawl) {
-      const n = cur.text.startsWith("//") ? cur.text.length : Math.floor(Math.max(0, age - 0.4) * 22);
-      const shown = cur.text.slice(0, n);
-      if (crawl.textContent !== shown) crawl.textContent = shown || " ";
-    }
     if (age > cur.hold) { step = (step + 1) % SCRIPT.length; stepStart = clock; }
     if (running) raf = requestAnimationFrame(frame);
   }
@@ -155,7 +147,6 @@
   function paintStill() {
     step = 0; stepStart = -10; clock = 0; running = false;
     frame(performance.now());
-    if (crawl) crawl.textContent = SCRIPT[3].text;
   }
   if (reduce) { paintStill(); return; }
 
