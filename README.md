@@ -12,7 +12,7 @@ The look is the app's own: true OLED black, the night palette from
 
 | Path | What |
 |---|---|
-| `index.html` | The whole site: hero, why, screenshots, features, the being, roadmap, install, thanks, FAQ. SEO meta, Open Graph and JSON-LD live in its `<head>`. |
+| `index.html` | The whole site: hero, why, screenshots, features, the being, status, install, thanks, FAQ. SEO meta, Open Graph and JSON-LD live in its `<head>`. |
 | `assets/css/site.css` | Styles and design tokens. |
 | `assets/js/site.js` | The hero's canvas being (reduced-motion aware, pauses off-screen). |
 | `assets/img/` | Screenshots (WebP), state and shape tiles, the Open Graph card, icons, the Obtainium badge. |
