@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hermes Vox — open-source voice client for Hermes Agent (Android)</title>
+<meta name="description" content="Free, open-source Android voice client for your self-hosted Hermes Agent: hands-free calls, on-device speech, barge-in, and a living presence.">
+<link rel="canonical" href="https://hermesvox.org/">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Christopher Goulet">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Hermes Vox">
+<meta property="og:url" content="https://hermesvox.org/">
+<meta property="og:title" content="Hermes Vox — the voice of your Hermes agent">
+<meta property="og:description" content="Open-source Android voice client for Hermes Agent. On-device speech, hands-free calls with barge-in, and a presence that shows the agent's real work.">
+<meta property="og:image" content="https://hermesvox.org/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hermes Vox — the voice of your Hermes agent, shown as a glowing violet soundwave">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hermes Vox — the voice of your Hermes agent">
+<meta name="twitter:description" content="Open-source Android voice client for Hermes Agent. On-device speech, hands-free, bring your own gateway.">
+<meta name="twitter:image" content="https://hermesvox.org/assets/img/og.png">
+
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/rajdhani-semibold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/rajdhani-bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://hermesvox.org/#app",
+      "name": "Hermes Vox",
+      "alternateName": "Vox",
+      "url": "https://hermesvox.org/",
+      "description": "An open-source Android voice client for the self-hosted Hermes Agent: hands-free calls, on-device speech recognition and text-to-speech, barge-in, and a GPU-drawn presence that reacts to the agent's real tool calls.",
+      "applicationCategory": "UtilitiesApplication",
+      "applicationSubCategory": "Voice assistant",
+      "operatingSystem": "Android 7.0 or later",
+      "softwareVersion": "0.8.0",
+      "datePublished": "2026-09-30",
+      "license": "https://www.apache.org/licenses/LICENSE-2.0",
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "downloadUrl": "https://github.com/chezgoulet/hermes-vox/releases/latest",
+      "installUrl": "https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/chezgoulet/hermes-vox",
+      "codeRepository": "https://github.com/chezgoulet/hermes-vox",
+      "image": "https://hermesvox.org/assets/img/icon-512.png",
+      "screenshot": [
+        "https://hermesvox.org/assets/img/call.webp",
+        "https://hermesvox.org/assets/img/speaking.webp",
+        "https://hermesvox.org/assets/img/settings.webp"
+      ],
+      "featureList": [
+        "Hands-free voice calls with barge-in",
+        "On-device speech recognition (Whisper, Parakeet)",
+        "On-device text-to-speech (Supertonic, Piper)",
+        "Optional on-device Gemma 4 E2B presence layer",
+        "Bring your own Hermes Agent gateway",
+        "GPU-rendered presence with 27 shapes"
+      ],
+      "author": { "@type": "Person", "name": "Christopher Goulet", "url": "https://github.com/chezgoulet" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://hermesvox.org/#site",
+      "url": "https://hermesvox.org/",
+      "name": "Hermes Vox",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What is Hermes Vox?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Hermes Vox is a free, open-source Android app that lets you talk to your own Hermes Agent by voice. The agent does the thinking, tools and memory; the phone handles listening, speaking and interruption on-device." } },
+        { "@type": "Question", "name": "Do I need my own Hermes Agent?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Vox is a client, not a service. You point it at a Hermes Agent gateway you run — locally, on your own network, or on a server you control — and enter its endpoint and API key." } },
+        { "@type": "Question", "name": "Does my voice go to the cloud?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Speech recognition and text-to-speech run on the phone. The only network peer is the Hermes gateway you configure, plus the one-time model downloads you start." } },
+        { "@type": "Question", "name": "Is Hermes Vox on Google Play?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not yet — it is coming soon. Today you can install it with Obtainium or download the signed APK from GitHub releases." } },
+        { "@type": "Question", "name": "Is Hermes Vox finished?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. It is a beta and a work in progress: installable and useful, with streaming speech recognition, a smaller on-device presence model, and full-duplex conversation still ahead." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <a class="brand" href="/" aria-label="Hermes Vox home">
+    <img src="/assets/img/icon-192.png" width="36" height="36" alt="">
+    <span>Hermes Vox</span>
+  </a>
+  <nav aria-label="Primary">
+    <ul>
+      <li><a href="#why">Why</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#being">The being</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#get">Get it</a></li>
+      <li><a class="gh" href="https://github.com/chezgoulet/hermes-vox" rel="noopener">GitHub</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
+  <canvas id="being-canvas" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+    <p class="pills"><span class="pill">Beta · 0.8.0</span><span class="pill">Open source</span><span class="pill">Android</span></p>
+    <h1 id="hero-title">The voice of your <span class="accent">Hermes&nbsp;agent</span>.</h1>
+    <p class="lead">Hermes Vox is an open-source Android app that lets you <em>talk</em> to the
+      <a href="https://hermes-agent.nousresearch.com" rel="noopener">Hermes Agent</a> you already run —
+      hands-free, with on-device speech, and a living presence that shows the agent's real work.</p>
+    <p class="voice" aria-hidden="true"><span id="crawl">“The tide at Bar Harbor turns at 4:12 this afternoon…”</span></p>
+    <div class="badges" id="get-badges">
+      <a class="badge-link" href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/chezgoulet/hermes-vox" rel="noopener">
+        <img src="/assets/img/badge-obtainium.png" width="162" height="63" alt="Get it on Obtainium">
+      </a>
+      <span class="badge-play" role="img" aria-label="Coming soon to Google Play">
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 2.8v18.4c0 .5.5.8.9.6l16-9.2c.4-.2.4-.9 0-1.1l-16-9.3c-.4-.2-.9.1-.9.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span><small>Coming soon to</small><b>Google Play</b></span>
+      </span>
+    </div>
+    <p class="fine">Free · Apache-2.0 · <a href="https://github.com/chezgoulet/hermes-vox/releases/latest" rel="noopener">Download the APK</a> · Requires your own Hermes Agent gateway</p>
+  </div>
+</section>
+
+<section id="why" class="band" aria-labelledby="why-title">
+  <div class="wrap">
+    <p class="kicker">Why it exists</p>
+    <h2 id="why-title">A voice that feels present — with a real agent behind it.</h2>
+    <p class="intro">The best voice AI answers straight away, lets you interrupt, and sounds like someone.
+      Most of it is also a voice with nobody home, or an agent living in somebody else's cloud.
+      <a href="https://hermes-agent.nousresearch.com" rel="noopener">Hermes Agent</a> by
+      <a href="https://nousresearch.com" rel="noopener">Nous Research</a> is a real agent you run
+      yourself — tools, long-term memory, skills, a persistent identity. Vox gives it a voice and a
+      face <strong>without adding a second brain</strong>.</p>
+    <div class="cards three">
+      <article class="card">
+        <h3>The entity <span class="accent">is</span> Hermes</h3>
+        <p>Not a persona on top. Hermes owns the reasoning, tools, memory and context. The phone owns
+          what has to be instant: hearing, turn-taking, interruption, the voice, the presence.</p>
+      </article>
+      <article class="card">
+        <h3>Sovereign by construction</h3>
+        <p>Speech recognition and synthesis run on the phone. The only network peer is the gateway
+          you configure. No accounts, no vendor cloud, no keys baked into the app.</p>
+      </article>
+      <article class="card">
+        <h3>One agent, many doors</h3>
+        <p>Vox is one more frontend to the same Hermes that already answers you on Telegram, desktop
+          or the CLI. Same memory, same skills — it never forks the agent.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="screens" class="band" aria-labelledby="screens-title">
+  <div class="wrap">
+    <p class="kicker">See it</p>
+    <h2 id="screens-title">No chrome. Just the being and the words.</h2>
+    <div class="phones">
+      <figure class="phone">
+        <img src="/assets/img/call.webp" width="720" height="1473" loading="lazy" decoding="async"
+             alt="Hermes Vox during an open call: a quiet cyan nebula of light on true black, with the call timer below">
+        <figcaption>An open call — hands-free, no push-to-talk.</figcaption>
+      </figure>
+      <figure class="phone">
+        <img src="/assets/img/speaking.webp" width="720" height="1473" loading="lazy" decoding="async"
+             alt="Hermes Vox speaking: the being becomes a violet soundwave while the reply scrolls beneath it in monospace">
+        <figcaption>Speaking — the words follow the voice.</figcaption>
+      </figure>
+      <figure class="phone">
+        <img src="/assets/img/settings.webp" width="720" height="1473" loading="lazy" decoding="async"
+             alt="Hermes Vox settings: voice mode, models, entity and connection, speech and mic, transcription, voice, appearance, visuals">
+        <figcaption>Settings — local, and in plain language.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="band" aria-labelledby="features-title">
+  <div class="wrap">
+    <p class="kicker">What it does</p>
+    <h2 id="features-title">A real conversation, on your terms.</h2>
+    <div class="cards grid">
+      <article class="card">
+        <h3>Hands-free, interruptible</h3>
+        <p>An open line gated by voice activity. Talk over a reply and it stops and listens — and
+          your interrupting words become the next turn.</p>
+      </article>
+      <article class="card">
+        <h3>Hears you on-device</h3>
+        <p>Silero VAD with Whisper (int8) or NVIDIA Parakeet-TDT via sherpa-onnx. Hermes always gets the
+          whole utterance, checked for hallucinations, and a dim “heard” line shows what was sent.</p>
+      </article>
+      <article class="card">
+        <h3>Speaks on-device</h3>
+        <p>Supertonic: ten natural voices at 44.1&nbsp;kHz, about ten times faster than real time,
+          chosen by a measured bake-off. Piper as a lighter option.</p>
+      </article>
+      <article class="card">
+        <h3>Enhanced Realtime <span class="tag">alpha</span></h3>
+        <p>An on-device Gemma&nbsp;4&nbsp;E2B “soul” on the phone's GPU takes the first beat of every turn in
+          the agent's own voice, hears your tone, and hands over to Hermes for anything real.</p>
+      </article>
+      <article class="card">
+        <h3>Bring your own gateway</h3>
+        <p>Your endpoint, your key, your network. Optional per-device scopes give each person their
+          own memory on a shared gateway.</p>
+      </article>
+      <article class="card">
+        <h3>Built to be trusted</h3>
+        <p>Keystore-encrypted key, TLS everywhere, sha256-verified resumable model downloads,
+          local-only logs, transcript logging off by default. <a href="https://github.com/chezgoulet/hermes-vox/blob/main/PRIVACY.md" rel="noopener">Privacy policy</a>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="being" class="band" aria-labelledby="being-title">
+  <div class="wrap">
+    <p class="kicker">The being</p>
+    <h2 id="being-title">It shows the agent's real work.</h2>
+    <p class="intro">Every tool call Hermes makes reaches the phone, and the being takes a shape for it.
+      Six thousand points of light, drawn on the GPU with real bloom, morphing between shapes at 60&nbsp;fps.</p>
+    <ol class="states">
+      <li><img src="/assets/img/state-thinking.webp" width="480" height="480" loading="lazy" decoding="async" alt="An amber radar sweep"><span>Thinking</span></li>
+      <li><img src="/assets/img/state-web.webp" width="480" height="480" loading="lazy" decoding="async" alt="A blue hourglass"><span>Waiting on the web</span></li>
+      <li><img src="/assets/img/state-terminal.webp" width="480" height="480" loading="lazy" decoding="async" alt="An amber terminal window typing itself out"><span>Running a command</span></li>
+      <li><img src="/assets/img/state-memory.webp" width="480" height="480" loading="lazy" decoding="async" alt="An amber constellation of linked stars"><span>Recalling memory</span></li>
+      <li><img src="/assets/img/state-streaming.webp" width="480" height="480" loading="lazy" decoding="async" alt="A rising orange flame"><span>Answer arriving</span></li>
+      <li><img src="/assets/img/state-speak.webp" width="480" height="480" loading="lazy" decoding="async" alt="A violet soundwave"><span>Speaking</span></li>
+    </ol>
+
+    <h3 class="sub">27 shapes, each one exact</h3>
+    <p class="intro">Pick one for rest, listening, thinking and speaking — or let it cycle.</p>
+    <ul class="shapes">
+      <li><img src="/assets/img/shapes/aura.webp" width="320" height="320" loading="lazy" decoding="async" alt="The aura shape, drawn in cyan points of light"><span>Aura</span></li>
+      <li><img src="/assets/img/shapes/iris.webp" width="320" height="320" loading="lazy" decoding="async" alt="The iris shape, drawn in cyan points of light"><span>Iris</span></li>
+      <li><img src="/assets/img/shapes/vortex.webp" width="320" height="320" loading="lazy" decoding="async" alt="The vortex shape, drawn in cyan points of light"><span>Vortex</span></li>
+      <li><img src="/assets/img/shapes/waveform.webp" width="320" height="320" loading="lazy" decoding="async" alt="The jellyfish shape, drawn in cyan points of light"><span>Jellyfish</span></li>
+      <li><img src="/assets/img/shapes/scan.webp" width="320" height="320" loading="lazy" decoding="async" alt="The globe scan shape, drawn in cyan points of light"><span>Globe scan</span></li>
+      <li><img src="/assets/img/shapes/constellation.webp" width="320" height="320" loading="lazy" decoding="async" alt="The constellation shape, drawn in cyan points of light"><span>Constellation</span></li>
+      <li><img src="/assets/img/shapes/bracket.webp" width="320" height="320" loading="lazy" decoding="async" alt="The terminal shape, drawn in cyan points of light"><span>Terminal</span></li>
+      <li><img src="/assets/img/shapes/flame.webp" width="320" height="320" loading="lazy" decoding="async" alt="The flame shape, drawn in cyan points of light"><span>Flame</span></li>
+      <li><img src="/assets/img/shapes/ribbon.webp" width="320" height="320" loading="lazy" decoding="async" alt="The ribbon shape, drawn in cyan points of light"><span>Ribbon</span></li>
+      <li><img src="/assets/img/shapes/infall.webp" width="320" height="320" loading="lazy" decoding="async" alt="The black hole shape, drawn in cyan points of light"><span>Black hole</span></li>
+      <li><img src="/assets/img/shapes/bloom.webp" width="320" height="320" loading="lazy" decoding="async" alt="The bloom shape, drawn in cyan points of light"><span>Bloom</span></li>
+      <li><img src="/assets/img/shapes/soundwave.webp" width="320" height="320" loading="lazy" decoding="async" alt="The soundwave shape, drawn in cyan points of light"><span>Soundwave</span></li>
+      <li><img src="/assets/img/shapes/arc.webp" width="320" height="320" loading="lazy" decoding="async" alt="The lightning shape, drawn in cyan points of light"><span>Lightning</span></li>
+      <li><img src="/assets/img/shapes/nucleus.webp" width="320" height="320" loading="lazy" decoding="async" alt="The nucleus shape, drawn in cyan points of light"><span>Nucleus</span></li>
+      <li><img src="/assets/img/shapes/eye.webp" width="320" height="320" loading="lazy" decoding="async" alt="The eye shape, drawn in cyan points of light"><span>Eye</span></li>
+      <li><img src="/assets/img/shapes/water.webp" width="320" height="320" loading="lazy" decoding="async" alt="The ripples shape, drawn in cyan points of light"><span>Ripples</span></li>
+      <li><img src="/assets/img/shapes/radar.webp" width="320" height="320" loading="lazy" decoding="async" alt="The radar shape, drawn in cyan points of light"><span>Radar</span></li>
+      <li><img src="/assets/img/shapes/octopus.webp" width="320" height="320" loading="lazy" decoding="async" alt="The octopus shape, drawn in cyan points of light"><span>Octopus</span></li>
+      <li><img src="/assets/img/shapes/sphere.webp" width="320" height="320" loading="lazy" decoding="async" alt="The sphere shape, drawn in cyan points of light"><span>Sphere</span></li>
+      <li><img src="/assets/img/shapes/helix.webp" width="320" height="320" loading="lazy" decoding="async" alt="The helix shape, drawn in cyan points of light"><span>Helix</span></li>
+      <li><img src="/assets/img/shapes/knot.webp" width="320" height="320" loading="lazy" decoding="async" alt="The knot shape, drawn in cyan points of light"><span>Knot</span></li>
+      <li><img src="/assets/img/shapes/aurora.webp" width="320" height="320" loading="lazy" decoding="async" alt="The aurora shape, drawn in cyan points of light"><span>Aurora</span></li>
+      <li><img src="/assets/img/shapes/harmonograph.webp" width="320" height="320" loading="lazy" decoding="async" alt="The harmonograph shape, drawn in cyan points of light"><span>Harmonograph</span></li>
+      <li><img src="/assets/img/shapes/tesseract.webp" width="320" height="320" loading="lazy" decoding="async" alt="The tesseract shape, drawn in cyan points of light"><span>Tesseract</span></li>
+      <li><img src="/assets/img/shapes/mandala.webp" width="320" height="320" loading="lazy" decoding="async" alt="The mandala shape, drawn in cyan points of light"><span>Mandala</span></li>
+      <li><img src="/assets/img/shapes/butterfly.webp" width="320" height="320" loading="lazy" decoding="async" alt="The butterfly shape, drawn in cyan points of light"><span>Butterfly</span></li>
+      <li><img src="/assets/img/shapes/hourglass.webp" width="320" height="320" loading="lazy" decoding="async" alt="The hourglass shape, drawn in cyan points of light"><span>Hourglass</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="how" class="band" aria-labelledby="how-title">
+  <div class="wrap">
+    <p class="kicker">How it works</p>
+    <h2 id="how-title">Hermes decides. The phone makes it feel alive.</h2>
+    <div class="flow" role="img" aria-label="Diagram: your voice is heard on the phone, sent as text to your Hermes gateway, and the answer is spoken on the phone">
+      <div class="node"><b>You</b><span>voice</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node phone-node"><b>Phone — on-device</b><span>VAD · speech-to-text · barge-in<br>voice · the being · the soul (alpha)</span></div>
+      <div class="arrow" aria-hidden="true"></div>
+      <div class="node mind"><b>Your Hermes gateway</b><span>reasoning · tools · memory · identity</span></div>
+    </div>
+    <ul class="ticks">
+      <li><b>Gemma speaks; Hermes acts.</b> The on-device soul says “let me look that up”. Hermes is the one that looks it up.</li>
+      <li><b>No tools at the edge.</b> The phone cannot call a tool, by construction.</li>
+      <li><b>One identity.</b> The soul borrows Hermes' own <code>SOUL.md</code> through an agent-authored voice file, read-only.</li>
+    </ul>
+    <p class="intro"><a href="https://github.com/chezgoulet/hermes-vox/blob/main/docs/ARCHITECTURE.md" rel="noopener">Read the architecture →</a></p>
+  </div>
+</section>
+
+<section id="roadmap" class="band" aria-labelledby="roadmap-title">
+  <div class="wrap">
+    <p class="kicker">Where it's going</p>
+    <h2 id="roadmap-title">A work in progress — and honest about it.</h2>
+    <div class="notice">
+      <b>Beta.</b> Vox is installable and useful today, and it moves fast: expect rough edges and
+      things that change between releases. Testing on real phones, polish and bug reports are the most
+      valuable help right now.
+    </div>
+    <div class="cards three roadmap">
+      <article class="card">
+        <p class="phase done">Shipped — 0.8.0</p>
+        <ul>
+          <li>Gemma on the GPU; the soul's beat on every turn</li>
+          <li>Supertonic voice; the soul hears your tone</li>
+          <li>Whole-utterance STT, validator, optional Parakeet</li>
+          <li>The being rebuilt on the GPU, 27 shapes</li>
+          <li>Background, resumable model downloads</li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="phase now">Now</p>
+        <ul>
+          <li>Field verification on real phones</li>
+          <li>Real-world turn-taking and echo tuning</li>
+          <li>Memory and thermal soak tests</li>
+          <li>Google Play listing</li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="phase next">Next — 0.9 and beyond</p>
+        <ul>
+          <li>Streaming speech recognition</li>
+          <li>Semantic turn-taking and backchannels</li>
+          <li>A presence-sized soul model; more voices</li>
+          <li>Full-duplex conversation; a desktop client</li>
+        </ul>
+      </article>
+    </div>
+    <p class="intro"><a href="https://github.com/chezgoulet/hermes-vox/blob/main/ROADMAP.md" rel="noopener">Full roadmap →</a></p>
+  </div>
+</section>
+
+<section id="get" class="band" aria-labelledby="get-title">
+  <div class="wrap">
+    <p class="kicker">Get it</p>
+    <h2 id="get-title">Install Hermes Vox.</h2>
+    <div class="cards three">
+      <article class="card">
+        <h3>Obtainium <span class="tag ok">recommended</span></h3>
+        <p>Installs the signed APK from each GitHub release and keeps it up to date.</p>
+        <a class="badge-link" href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/chezgoulet/hermes-vox" rel="noopener">
+          <img src="/assets/img/badge-obtainium.png" width="162" height="63" loading="lazy" alt="Get it on Obtainium">
+        </a>
+        <p class="fine">Or add <code>github.com/chezgoulet/hermes-vox</code> as a source in <a href="https://obtainium.imranr.dev" rel="noopener">Obtainium</a>.</p>
+      </article>
+      <article class="card">
+        <h3>APK</h3>
+        <p>Download <code>hermes-vox-0.8.0.apk</code> from GitHub releases and install it. Android&nbsp;7.0 or later.</p>
+        <p><a class="button" href="https://github.com/chezgoulet/hermes-vox/releases/latest" rel="noopener">Latest release</a></p>
+        <p class="fine">Or build from source with one command: <code>bash scripts/gate.sh</code>.</p>
+      </article>
+      <article class="card">
+        <h3>Google Play</h3>
+        <p>A Play Store listing is on the way. It will stay a bring-your-own-gateway client.</p>
+        <span class="badge-play" role="img" aria-label="Coming soon to Google Play">
+          <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 2.8v18.4c0 .5.5.8.9.6l16-9.2c.4-.2.4-.9 0-1.1l-16-9.3c-.4-.2-.9.1-.9.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+          <span><small>Coming soon to</small><b>Google Play</b></span>
+        </span>
+      </article>
+    </div>
+    <ol class="steps">
+      <li><b>Run Hermes Agent.</b> Vox needs a <a href="https://hermes-agent.nousresearch.com/docs/" rel="noopener">Hermes Agent</a> gateway you control, ideally reached over a private network such as a tailnet.</li>
+      <li><b>Connect.</b> Enter the gateway's HTTPS endpoint and its <code>API_SERVER_KEY</code>.</li>
+      <li><b>Download the voice.</b> Three on-device models, about 290&nbsp;MB, in Settings → Models.</li>
+      <li><b>Call.</b> Tap the call button and talk.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="thanks" class="band" aria-labelledby="thanks-title">
+  <div class="wrap">
+    <p class="kicker">Thank you</p>
+    <h2 id="thanks-title">Built on Hermes Agent, by Nous Research.</h2>
+    <p class="intro">Hermes Vox exists because <a href="https://nousresearch.com" rel="noopener">Nous Research</a>
+      builds and open-sources <a href="https://hermes-agent.nousresearch.com" rel="noopener">Hermes Agent</a> — the
+      mind behind every word Vox speaks. Thank you for making a real, self-hostable agent that anyone can
+      give a voice to.</p>
+    <div class="cards two">
+      <a class="card link-card" href="https://hermes-agent.nousresearch.com" rel="noopener">
+        <h3>Hermes Agent →</h3>
+        <p>The open-source agent that grows with you: tools, memory, skills and a persistent identity.
+          <span class="url">hermes-agent.nousresearch.com</span></p>
+      </a>
+      <a class="card link-card" href="https://nousresearch.com" rel="noopener">
+        <h3>Nous Research →</h3>
+        <p>The research collective behind Hermes models and Hermes Agent.
+          <span class="url">nousresearch.com</span></p>
+      </a>
+    </div>
+    <p class="fine credits">Also standing on <a href="https://github.com/k2-fsa/sherpa-onnx" rel="noopener">sherpa-onnx</a>,
+      <a href="https://huggingface.co/Supertone/supertonic-2" rel="noopener">Supertonic</a>, Whisper, Parakeet-TDT,
+      Silero VAD, Piper, Gemma and LiteRT-LM, and the Rajdhani typeface.
+      Hermes Vox is an independent community project, not affiliated with or endorsed by Nous Research.</p>
+  </div>
+</section>
+
+<section id="faq" class="band" aria-labelledby="faq-title">
+  <div class="wrap narrow">
+    <p class="kicker">Questions</p>
+    <h2 id="faq-title">FAQ</h2>
+    <details><summary>What is Hermes Vox?</summary>
+      <p>A free, open-source Android app that lets you talk to your own Hermes Agent by voice. The agent does the thinking, tools and memory; the phone handles listening, speaking and interruption on-device.</p></details>
+    <details><summary>Do I need my own Hermes Agent?</summary>
+      <p>Yes. Vox is a client, not a service. You point it at a Hermes Agent gateway you run — locally, on your own network, or on a server you control — and enter its endpoint and API key. There is nothing to sign up for.</p></details>
+    <details><summary>Does my voice go to the cloud?</summary>
+      <p>No. Speech recognition and text-to-speech run on the phone. The only network peer is the Hermes gateway you configure, plus the one-time model downloads you start.</p></details>
+    <details><summary>Is it on Google Play?</summary>
+      <p>Not yet — it's coming soon. Today, install it with Obtainium or download the signed APK from GitHub releases.</p></details>
+    <details><summary>Is it finished?</summary>
+      <p>No. It's a beta and a work in progress: installable and useful, with streaming speech recognition, a smaller on-device presence model, and full-duplex conversation still ahead. Contributions are welcome.</p></details>
+    <details><summary>How can I help?</summary>
+      <p>Try it on your phone and <a href="https://github.com/chezgoulet/hermes-vox/issues" rel="noopener">open an issue</a> with what you find, or read <a href="https://github.com/chezgoulet/hermes-vox/blob/main/CONTRIBUTING.md" rel="noopener">CONTRIBUTING.md</a> and send a pull request.</p></details>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="brand small"><img src="/assets/img/icon-192.png" width="24" height="24" alt=""> Hermes Vox</p>
+    <p><a href="https://github.com/chezgoulet/hermes-vox" rel="noopener">GitHub</a> ·
+      <a href="https://github.com/chezgoulet/hermes-vox/releases" rel="noopener">Releases</a> ·
+      <a href="https://github.com/chezgoulet/hermes-vox/blob/main/PRIVACY.md" rel="noopener">Privacy</a> ·
+      <a href="https://github.com/chezgoulet/hermes-vox/blob/main/SECURITY.md" rel="noopener">Security</a> ·
+      <a href="https://github.com/chezgoulet/hermes-vox/blob/main/LICENSE" rel="noopener">Apache-2.0</a></p>
+    <p class="fine">Hermes Agent is a project of Nous Research. Google Play is a trademark of Google LLC.
+      Screenshots from Hermes Vox 0.8.0.</p>
+  </div>
+</footer>
+
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>
