@@ -39,22 +39,62 @@ def version_from_gradle(text: str) -> tuple[str, int]:
     return name.group(1), int(code.group(1))
 
 
-def shipped_bullets(notes: str, limit: int = 5) -> list[str]:
-    """The release note's section headings, cleaned, as the 'shipped' list."""
+MARK_BEGIN = "<!-- site:begin -->"
+MARK_END = "<!-- site:end -->"
+
+
+def bullets_from_notes(notes: str) -> list[str]:
+    """Bullets explicitly marked for the site, if the release note has them."""
+    if MARK_BEGIN not in notes or MARK_END not in notes:
+        return []
+    block = notes.split(MARK_BEGIN, 1)[1].split(MARK_END, 1)[0]
+    items = []
+    for line in block.splitlines():
+        m = re.match(r"^\s*[-*]\s+(.+?)\s*$", line)
+        if m:
+            items.append(m.group(1))
+    return items
+
+
+def bullets_from_headings(notes: str, limit: int = 5) -> list[str]:
+    """Fallback: section headings, minus the ones that are process, not product."""
     headings = [h.strip() for h in re.findall(r"^##\s+(.+)$", notes, re.M)]
     skip = re.compile(
         r"^(notes|what'?s next|known|appendix|contents|not in this release|"
-        r"everything else|also)\b", re.I)
+        r"everything else|also|provenance|pipeline|release process|"
+        r"the front page|docs?)\b", re.I)
     out = []
     for h in headings:
         if skip.match(h):
             continue
         h = re.sub(r"\s*\(#\d+\)\s*$", "", h).strip()
-        if h:
+        if h and "[internal]" not in h.lower():
             out.append(h)
-    if not out:
-        fail("release notes contain no section headings to summarise")
     return out[:limit]
+
+
+def shipped_bullets(notes: str, curated: Path, limit: int = 5) -> list[str]:
+    """What the page says shipped, in priority order.
+
+    1. A curated list in the site repo (`content/release-<version>.md`) — prose is
+       editorial, and a release note is written for engineers, not visitors.
+    2. A `<!-- site:begin --> ... <!-- site:end -->` block inside the release note.
+    3. Section headings, with process sections skipped as a last resort.
+    """
+    if curated.is_file():
+        items = [m.group(1) for m in
+                 (re.match(r"^\s*[-*]\s+(.+?)\s*$", l) for l in curated.read_text().splitlines()) if m]
+        if items:
+            return items[:limit]
+    items = bullets_from_notes(notes)
+    if items:
+        return items[:limit]
+    items = bullets_from_headings(notes, limit)
+    if not items:
+        fail("no site bullets: add content/release-<version>.md, or mark a block in the notes")
+    print("warning: no curated bullets; falling back to release-note headings "
+          "(add content/release-<version>.md to control the page)", file=sys.stderr)
+    return items
 
 
 def human_date(iso: str) -> str:
@@ -98,7 +138,7 @@ def main() -> None:
 
     notes_path = app / f"docs/RELEASE-{version}.md"
     notes = read(notes_path)
-    bullets = shipped_bullets(notes)
+    bullets = shipped_bullets(notes, site / "content" / f"release-{version}.md")
     title = release.get("name") or f"Hermes Vox {version}"
 
     data = {

@@ -37,6 +37,7 @@ local asset or anchor the page references but does not ship.
 | `template/index.html` | The page's source of truth, with `{{TOKENS}}` where release data goes. |
 | `build/generate.py` | Reads the app tag + release JSON, renders the template, copies assets, writes `site-data.json` for audit. |
 | `build/linkcheck.py` | Verifies every local href/src and same-page anchor resolves. |
+| `content/release-<version>.md` | The bullets the page shows for that release — prose, curated. Falls back to a `<!-- site:begin -->` block in the release note, then to its section headings. |
 | `index.html`, `site-data.json` | Generated output, committed so Pages can serve it from the branch. Do not edit by hand. |
 | `assets/css/site.css` | Styles and design tokens. |
 | `assets/js/site.js` | The hero's canvas being (reduced-motion aware, pauses off-screen). |
@@ -73,6 +74,9 @@ the current build.
 ## Copy rules
 
 - No number appears in the template unless the generator supplies it.
+- The "shipped" bullets are editorial: write `content/release-<version>.md` when
+  cutting a release. A release note is written for engineers; its headings are a
+  poor summary for visitors.
 - External links are not fetched by the build; a dead external link is not a
   build failure.
 - The page must not claim a status the app does not have. Distribution is

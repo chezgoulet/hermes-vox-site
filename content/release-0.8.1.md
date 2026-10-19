@@ -1,0 +1,2 @@
+- A paired Bluetooth, wired or USB headset becomes the call's route — at line open, and again if one is attached mid-call.
+- Nightly builds install over the release again, and each nightly is tagged at the commit it was built from.
