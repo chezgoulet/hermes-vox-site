@@ -123,7 +123,7 @@
 <section class="hero" aria-labelledby="hero-title">
   <canvas id="being-canvas" aria-hidden="true"></canvas>
   <div class="hero-copy">
-    <p class="pills"><span class="pill">Beta · 0.8.0</span><span class="pill">Open source</span><span class="pill">Android</span></p>
+    <p class="pills"><span class="pill">Beta · 0.8.1</span><span class="pill">Open source</span><span class="pill">Android</span></p>
     <h1 id="hero-title">The voice of your <span class="accent">Hermes&nbsp;agent</span>.</h1>
     <p class="lead">Hermes Vox is an open-source Android app that lets you <em>talk</em> to the
       <a href="https://hermes-agent.nousresearch.com" rel="noopener">Hermes Agent</a> you already run —
@@ -132,9 +132,9 @@
       <a class="badge-link" href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/chezgoulet/hermes-vox" rel="noopener">
         <img src="/assets/img/badge-obtainium.png" width="162" height="63" alt="Get it on Obtainium">
       </a>
-      <span class="badge-play" role="img" aria-label="Coming soon to Google Play">
-        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 2.8v18.4c0 .5.5.8.9.6l16-9.2c.4-.2.4-.9 0-1.1l-16-9.3c-.4-.2-.9.1-.9.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        <span><small>Coming soon to</small><b>Google Play</b></span>
+      <span class="badge-play" role="img" aria-label="F-Droid listing in preparation">
+        <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8.5 9.5l3.5 3 3.5-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span><small>In preparation</small><b>F-Droid</b></span>
       </span>
     </div>
     <p class="fine">Free · Apache-2.0 · <a href="https://github.com/chezgoulet/hermes-vox/releases/latest" rel="noopener">Download the APK</a> · Requires your own Hermes Agent gateway</p>
@@ -313,22 +313,20 @@
     </div>
     <div class="cards two status">
       <article class="card">
-        <p class="phase done">Shipped — 0.8.0</p>
+        <p class="phase done">Shipped — 0.8.1 <span class="fine">· 19 October 2026</span></p>
         <ul>
-          <li>Gemma on the GPU; the soul's beat on every turn</li>
-          <li>Supertonic voice; the soul hears your tone</li>
-          <li>Whole-utterance STT, validator, optional Parakeet</li>
-          <li>The being rebuilt on the GPU, 27 shapes</li>
-          <li>Background, resumable model downloads</li>
+          <li>Your headset becomes the call's route</li>
+          <li>The front page describes the release you have</li>
+          <li>Provenance of the nightlies</li>
         </ul>
       </article>
       <article class="card">
-        <p class="phase now">Being tested now</p>
+        <p class="phase now">In progress — 0.9</p>
         <ul>
-          <li>Field verification on real phones</li>
-          <li>Real-world turn-taking and echo tuning</li>
-          <li>Memory and thermal soak tests</li>
-          <li>Google Play listing</li>
+          <li>Streaming speech recognition, chosen by measurement</li>
+          <li>Qwen 3.5 0.8B as the default presence model</li>
+          <li>Wake word, then voice-led personalisation</li>
+          <li>F-Droid inclusion and reproducible builds</li>
         </ul>
       </article>
     </div>
@@ -350,17 +348,16 @@
       </article>
       <article class="card">
         <h3>APK</h3>
-        <p>Download <code>hermes-vox-0.8.0.apk</code> from GitHub releases and install it. Android&nbsp;7.0 or later.</p>
+        <p>Download <code>hermes-vox-0.8.1.apk</code> — 99.6&nbsp;MB — from GitHub releases and install it. Android&nbsp;7.0 or later.</p>
+        <p class="fine">sha256 <code>9b090c75862e…</code> · <a href="https://github.com/chezgoulet/hermes-vox/releases/download/v0.8.1/hermes-vox-0.8.1.apk" rel="noopener">direct APK</a></p>
         <p><a class="button" href="https://github.com/chezgoulet/hermes-vox/releases/latest" rel="noopener">Latest release</a></p>
         <p class="fine">Or build from source with one command: <code>bash scripts/gate.sh</code>.</p>
       </article>
       <article class="card">
-        <h3>Google Play</h3>
-        <p>A Play Store listing is on the way. It will stay a bring-your-own-gateway client.</p>
-        <span class="badge-play" role="img" aria-label="Coming soon to Google Play">
-          <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 2.8v18.4c0 .5.5.8.9.6l16-9.2c.4-.2.4-.9 0-1.1l-16-9.3c-.4-.2-.9.1-.9.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-          <span><small>Coming soon to</small><b>Google Play</b></span>
-        </span>
+        <h3>F-Droid <span class="tag">in preparation</span></h3>
+        <p>F-Droid builds the app from source and publishes our signed APK. The speech runtime has to be
+        built from source in their recipe first, so the listing is still ahead of us.</p>
+        <p class="fine">Until then, Obtainium and GitHub releases carry the same signed APK.</p>
       </article>
     </div>
     <ol class="steps">
@@ -428,8 +425,8 @@
       <a href="https://github.com/chezgoulet/hermes-vox/blob/main/PRIVACY.md" rel="noopener">Privacy</a> ·
       <a href="https://github.com/chezgoulet/hermes-vox/blob/main/SECURITY.md" rel="noopener">Security</a> ·
       <a href="https://github.com/chezgoulet/hermes-vox/blob/main/LICENSE" rel="noopener">Apache-2.0</a></p>
-    <p class="fine">Hermes Agent is a project of Nous Research. Google Play is a trademark of Google LLC.
-      Screenshots from Hermes Vox 0.8.0.</p>
+    <p class="fine">Hermes Agent is a project of Nous Research.
+      Screenshots are designed assets; refresh them when the UI changes.</p>
   </div>
 </footer>
 

@@ -1,0 +1,94 @@
+name: site
+
+# The page is generated from the app repository at a release tag: version, date,
+# APK name/size/checksum and the "shipped" bullets all come from that tag and that
+# release's metadata. Nothing on the page is hand-typed.
+#
+# Triggers:
+#   - repository_dispatch  (the app repo asks for a rebuild after a release)
+#   - workflow_dispatch    (manual, optionally for a specific tag)
+#   - schedule             (self-heal: rebuild from the latest release daily)
+
+on:
+  repository_dispatch:
+    types: [hermes-vox-release]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release tag (blank = latest release)"
+        required: false
+        type: string
+  schedule:
+    - cron: "17 6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+
+      - name: Resolve the tag
+        id: tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAYLOAD_TAG: ${{ github.event.client_payload.tag }}
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          set -euo pipefail
+          TAG="${PAYLOAD_TAG:-${INPUT_TAG:-}}"
+          if [ -z "$TAG" ]; then
+            TAG="$(gh api repos/chezgoulet/hermes-vox/releases/latest --jq .tag_name)"
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "building for $TAG"
+
+      - name: Fetch the app at that tag and the release metadata
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          set -euo pipefail
+          git clone --quiet --depth 1 --branch "$TAG" \
+            https://github.com/chezgoulet/hermes-vox.git /tmp/app
+          gh api "repos/chezgoulet/hermes-vox/releases/tags/$TAG" > /tmp/release.json
+          jq -r '"release \(.tag_name) published \(.published_at): \([.assets[].name] | join(", "))"' /tmp/release.json
+
+      - name: Generate
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          python3 build/generate.py \
+            --app-repo /tmp/app \
+            --ref "$TAG" \
+            --release-json /tmp/release.json \
+            --site-dir . \
+            --out /tmp/dist
+
+      - name: Link check
+        run: python3 build/linkcheck.py /tmp/dist
+
+      - name: Publish to the branch Pages serves
+        env:
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          set -euo pipefail
+          rsync -a --delete /tmp/dist/assets/ assets/
+          cp /tmp/dist/index.html index.html
+          cp /tmp/dist/site-data.json site-data.json
+          git config user.name "hermes-vox site bot"
+          git config user.email "site-bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no change for $TAG"
+            exit 0
+          fi
+          git commit -m "site: regenerate from $TAG"
+          git push
