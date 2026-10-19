@@ -1,0 +1,12 @@
+{
+  "VERSION": "0.8.1",
+  "VERSION_CODE": "142",
+  "TAG": "v0.8.1",
+  "RELEASE_DATE": "19 October 2026",
+  "APK_NAME": "hermes-vox-0.8.1.apk",
+  "APK_SIZE_MB": "99.6",
+  "APK_SHA256": "9b090c75862e9220fcc8d202dc1d0e81276181d10fe330b3395c48967dc50db8",
+  "APK_SHA256_SHORT": "9b090c75862e",
+  "DOWNLOAD_URL": "https://github.com/chezgoulet/hermes-vox/releases/download/v0.8.1/hermes-vox-0.8.1.apk",
+  "RELEASE_TITLE": "Hermes Vox 0.8.1 \u2014 the headset release"
+}
