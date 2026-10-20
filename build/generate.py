@@ -145,7 +145,9 @@ def main() -> None:
         "VERSION": version,
         "VERSION_CODE": str(code),
         "TAG": args.ref,
-        "RELEASE_DATE": human_date(release.get("publishedAt") or release.get("published") or ""),
+        "RELEASE_DATE": human_date(
+            release.get("publishedAt") or release.get("published_at") or release.get("published") or ""
+        ),
         "APK_NAME": name,
         "APK_SIZE_MB": f"{size / 1_000_000:.1f}",
         "APK_SHA256": digest,
