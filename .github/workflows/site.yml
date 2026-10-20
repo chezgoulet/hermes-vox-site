@@ -58,7 +58,12 @@ jobs:
           set -euo pipefail
           git clone --quiet --depth 1 --branch "$TAG" \
             https://github.com/chezgoulet/hermes-vox.git /tmp/app
-          gh api "repos/chezgoulet/hermes-vox/releases/tags/$TAG" > /tmp/release.json
+          # gh release view emits the camelCase shape the generator reads
+          # (publishedAt, assets[].url as a browser URL, assets[].digest).
+          # The REST endpoint emits snake_case and an API url, which made
+          # the regenerate fail with an empty release date.
+          gh release view "$TAG" --repo chezgoulet/hermes-vox \
+            --json tagName,publishedAt,name,assets > /tmp/release.json
           jq -r '"release \(.tag_name) published \(.published_at): \([.assets[].name] | join(", "))"' /tmp/release.json
 
       - name: Generate
