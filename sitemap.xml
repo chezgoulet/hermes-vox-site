@@ -10,4 +10,10 @@
     <image:image><image:loc>https://hermesvox.org/assets/img/speaking.webp</image:loc></image:image>
     <image:image><image:loc>https://hermesvox.org/assets/img/settings.webp</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://hermesvox.org/roadmap/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
