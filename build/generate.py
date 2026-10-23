@@ -180,7 +180,7 @@ def main() -> None:
     # Static site assets travel with the template.
     for item in ("assets", "CNAME", ".nojekyll", "robots.txt", "sitemap.xml",
                  "404.html", "favicon.ico", "favicon-32.png", "apple-touch-icon.png",
-                 "site.webmanifest", "LICENSE"):
+                 "site.webmanifest", "LICENSE", "roadmap"):
         src = site / item
         if not src.exists():
             fail(f"site asset missing: {src}")
