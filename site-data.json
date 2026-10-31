@@ -1,12 +1,12 @@
 {
-  "VERSION": "0.9.0.2",
-  "VERSION_CODE": "145",
-  "TAG": "v0.9.0.2",
+  "VERSION": "0.9.0.3",
+  "VERSION_CODE": "146",
+  "TAG": "v0.9.0.3",
   "RELEASE_DATE": "31 October 2026",
-  "APK_NAME": "hermes-vox-0.9.0.2.apk",
+  "APK_NAME": "hermes-vox-0.9.0.3.apk",
   "APK_SIZE_MB": "78.0",
-  "APK_SHA256": "689d1d011861420b0c1a6dbd869f64bb4945f7b450567e6f0d6da264df617fc3",
-  "APK_SHA256_SHORT": "689d1d011861",
-  "DOWNLOAD_URL": "https://github.com/chezgoulet/hermes-vox/releases/download/v0.9.0.2/hermes-vox-0.9.0.2.apk",
-  "RELEASE_TITLE": "Hermes Vox 0.9.0.2 \u2014 the fallback release"
+  "APK_SHA256": "6cb0879e1f2e300184485b1fd42b6579547c4fc2ea5aa657b5f9dee5fefa116f",
+  "APK_SHA256_SHORT": "6cb0879e1f2e",
+  "DOWNLOAD_URL": "https://github.com/chezgoulet/hermes-vox/releases/download/v0.9.0.3/hermes-vox-0.9.0.3.apk",
+  "RELEASE_TITLE": "Hermes Vox 0.9.0.3 \u2014 the hearing fix"
 }
