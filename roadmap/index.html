@@ -243,7 +243,7 @@
     <div class="navlinks" id="navlinks">
       <a href="#short">Short version</a>
       <a href="#roadmap">Roadmap</a>
-      <a href="#er" data-min="1">Enhanced Realtime</a>
+      <a href="#er" data-min="1">Presence</a>
       <a href="#app" data-min="1">The app</a>
       <a href="#why">Why Presence</a>
       <a href="#turn">A turn</a>
@@ -265,10 +265,10 @@
     <ul class="answers">
       <li><b>What it is</b><span>An Android app that turns your Hermes agent into a phone call. The agent runs on your server; the phone does ears, voice and Presence.</span></li>
       <li><b>What you need</b><span>An Android phone, and a Hermes agent you run yourself on a computer or server.</span></li>
-      <li><b>Where it is</b><span>Version 0.9 shipped on 21 October 2026, with a same-day fix (0.9.0.1). Download it from hermesvox.org. Next is 0.9.1: close the loop.</span></li>
+      <li><b>Where it is</b><span>Version 0.9 shipped on 21 October 2026, with a same-day fix (0.9.0.1). Download it from hermesvox.org. Next is 0.9.1: Presence — one call, with the unfinished parts behind a switch.</span></li>
       <li><b>Why Presence</b><span>Three problems: dead air while the agent thinks, a voice that is not <em>your</em> agent, and clumsy turn-taking.</span></li>
       <li><b>The one rule</b><span>The agent always wins. Presence may speak first. It never gets the last word.</span></li>
-      <li><b>What is next</b><span>0.9.2 is where Enhanced Realtime leaves alpha and becomes Presence. 1.0 has no date and waits for real use.</span></li>
+      <li><b>What is next</b><span>0.9.1 is Presence: the layer, approvals answered by voice, and one switch over everything unfinished. 0.9.2 is where Presence leaves alpha. 1.0 has no date and waits for real use.</span></li>
     </ul>
   </section>
 
@@ -308,22 +308,22 @@
         <span class="dot" aria-hidden="true"></span>
         <div class="relcard">
           <button class="relhead" aria-expanded="true" aria-controls="r-091">
-            <span class="relver">0.9.1</span><span class="relname">Close the loop</span>
+            <span class="relver">0.9.1</span><span class="relname">Presence</span>
             <span class="status">in progress</span><span class="chev" aria-hidden="true">−</span>
           </button>
           <div class="relbody" id="r-091">
-            <p class="relwhen">24 pieces of work · next release</p>
-            <p class="relq">Can a stranger do a real task by voice — command, visible work, clean result, no tutorial?</p>
+            <p class="relwhen">In the build · not yet released</p>
+            <p class="relq">Does the being hold the call while the agent works — and is it honest when it cannot?</p>
             <ul class="features">
-              <li><b>The loop, measured.</b> A stranger does a real task by voice — read the day, decline a meeting, draft, edit, send, clear the time, check trail conditions — with no tutorial.</li>
-              <li><b>See the work.</b> Which tool is running, and on what, while it happens.</li>
-              <li><b>Approvals on the phone.</b> When Hermes needs a sign-off, it asks you: what, why, and yes or no by voice or touch.</li>
-              <li><b>Discovery without tutorials.</b> The being, the interface and search teach together — and the agent gets the app skill, so it can answer “where is that setting”.</li>
-              <li><b>Better hearing.</b> The mic stays open, the phone stops re-hearing the same words, and turns end when you do.</li>
-              <li><b>No lost audio.</b> A cut reply cannot leak into the next turn.</li>
-              <li><b>Profiles and commands.</b> More than one connection, and a real commands screen instead of the stock list.</li>
-              <li><b>Inside-out polish.</b> Every screen and setting gets an ergonomics pass — light mode included — then the same standard for every change.</li>
-              <li><b>Speed tools and the store rail.</b> The same checks on two phones every release; F-Droid alongside, never holding the cut.</li>
+              <li><b>One call, no modes.</b> Presence becomes a layer on top of the call instead of a second product pretending to be one.</li>
+              <li><b>Approvals on the phone.</b> When your agent needs a sign-off, it asks here: what it wants and why. Answer by tapping or by saying yes or no. Silence is never a yes.</li>
+              <li><b>One switch over everything unfinished.</b> Alpha features, off by default, at the top of settings. Presence first among the sets, then continuous listening, turn-taking, phone tools, switching profiles and sessions.</li>
+              <li><b>VOX.md per profile.</b> Your agent writes how it talks, and the phone hands that to the local voice, so two agents do not blur into one.</li>
+              <li><b>Your agent’s sessions, from the phone.</b> Pick up a conversation you started at your desk.</li>
+              <li><b>The commands screen, rebuilt.</b> Grouped by what a command does, the filler gone, real state on the row.</li>
+              <li><b>Settings regrouped, every dialog redrawn.</b> Around twenty stock panels now draw on the app’s own ground, and light mode is drawn rather than tinted.</li>
+              <li><b>A command icon you choose.</b> Steve, Bill, Linus, Hermes, or Clanker — drawn in code, legible on both grounds.</li>
+              <li><b>Files handed to the agent</b>, and Vox as a share target. Reproducible builds, with F-Droid metadata prepared.</li>
             </ul>
           </div>
         </div>
@@ -337,15 +337,13 @@
             <span class="status">planned</span><span class="chev" aria-hidden="true">−</span>
           </button>
           <div class="relbody" id="r-092">
-            <p class="relwhen">10 pieces of work · after 0.9.1</p>
+            <p class="relwhen">After 0.9.1</p>
             <p class="relq">With the layer on by default, does the call feel natural?</p>
             <ul class="features">
-              <li><b>Enhanced Realtime leaves alpha.</b> The mode name retires; the layer it carried is called Presence, and it is on by default.</li>
-              <li><b>One switch, one name.</b> The mode picker goes; the only choice is on or off.</li>
-              <li><b>Small acknowledgements.</b> “Mm-hm” and “right” while you are still talking.</li>
-              <li><b>Resume after a cut-in.</b> Pick the thought back up instead of starting over.</li>
-              <li><b>Better short lines.</b> Format is repaired; false claims are still refused.</li>
-              <li><b>A way to measure it.</b> A per-session report, and a bar that means something.</li>
+              <li><b>Presence leaves alpha.</b> The switch goes; the layer is on by default and the app says honestly whether the phone can carry it.</li>
+              <li><b>VOX.md leaves alpha with it.</b> A document about how the agent talks belongs to everyone, not only to testers.</li>
+              <li><b>Sessions leave alpha.</b> Browsing and resuming a conversation from the phone becomes an ordinary feature.</li>
+              <li><b>Tuned by the reports.</b> The numbers users hand back decide what the defaults become.</li>
             </ul>
           </div>
         </div>
@@ -359,15 +357,17 @@
             <span class="status">planned</span><span class="chev" aria-hidden="true">−</span>
           </button>
           <div class="relbody" id="r-later">
-            <p class="relwhen">7 ideas · 4 directions</p>
+            <p class="relwhen">Directions · no date</p>
             <p class="relq">Which of these make the app notably better?</p>
             <ul class="features">
-              <li><b>Know who is speaking.</b> Answer a family, and refuse strangers.</li>
-              <li><b>The agent calls you.</b> Only on an arm you set, never unprompted.</li>
-              <li><b>Draw on the screen.</b> A shape or a timeline, from a closed vocabulary.</li>
-              <li><b>A wake word.</b> Hands-free from across the room — if always-listening fits the product.</li>
+              <li><b>Beside your screen.</b> Vox in one pane of a split screen, or floating over whatever you are using, instead of taking the whole display.</li>
+              <li><b>Inside the app you are already in.</b> Select text anywhere and ask about it; the agent reads what is on screen when you ask it to, and only then.</li>
+              <li><b>Acting in other apps.</b> Behind its own marked switch and a permission per app, with a record of everything it did.</li>
+              <li><b>On the television.</b> A thin client on the big screen: the box shows and speaks, the host does the thinking.</li>
+              <li><b>Questions made of shapes.</b> The agent asks with a slider, a choice or a blank canvas; you answer by drawing.</li>
+              <li><b>A starship-console theme.</b> Because a phone can look like a bridge terminal if you want it to.</li>
             </ul>
-            <p class="small" style="margin:12px 0 0">Two of the seven are ideas we are only keeping an eye on, not building. New ideas from users join this list, and anything here can be pulled forward.</p>
+            <p class="small" style="margin:12px 0 0">New ideas from users join this list, and anything here can be pulled forward.</p>
           </div>
         </div>
       </li>
@@ -399,18 +399,18 @@
   </section>
 
   <section id="er">
-    <p class="eyebrow">The mode that is growing up</p>
-    <h2>What is Enhanced Realtime?</h2>
-    <p class="lead">A normal call sends your words to the agent and speaks the answer. Enhanced Realtime adds a second, small model on the phone — the one that gives the call a voice of its own.</p>
+    <p class="eyebrow">The layer, not a mode</p>
+    <h2>What is Presence?</h2>
+    <p class="lead">There used to be two modes: a plain call, and a second one with a small model on the phone. In 0.9.1 the mode picker goes away. There is one call, and Presence sits on top of it — on, and the phone helps; off, and nothing about the call changes.</p>
 
     <div class="grid2">
       <div class="card">
-        <h3>Realtime</h3>
-        <p class="small">The plain call. Your words go to the agent, the answer comes back and is spoken. It works without any extra model.</p>
+        <h3>The call</h3>
+        <p class="small">Your words go to your agent and the answer is spoken. It works with no extra model, on any phone that can run the app.</p>
       </div>
       <div class="card">
-        <h3>Enhanced Realtime <span class="status" style="vertical-align:2px">alpha</span></h3>
-        <p class="small">The same call, plus a small model on the phone. It says the short opener, holds the silence while the agent works, and speaks in your agent’s voice. It needs its own download and a licence.</p>
+        <h3>Presence <span class="status" style="vertical-align:2px">alpha</span></h3>
+        <p class="small">A small model on the phone gives the call a voice of its own: it greets you, holds the silence while the agent works, and speaks in your agent’s voice. It needs its own download, an 8 GB phone, and it lives behind one switch.</p>
       </div>
     </div>
 
