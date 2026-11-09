@@ -1,12 +1,12 @@
 {
-  "VERSION": "0.9.1",
-  "VERSION_CODE": "147",
-  "TAG": "v0.9.1",
-  "RELEASE_DATE": "7 November 2026",
-  "APK_NAME": "hermes-vox-0.9.1.apk",
+  "VERSION": "0.9.1.1",
+  "VERSION_CODE": "148",
+  "TAG": "v0.9.1.1",
+  "RELEASE_DATE": "9 November 2026",
+  "APK_NAME": "hermes-vox-0.9.1.1.apk",
   "APK_SIZE_MB": "81.3",
-  "APK_SHA256": "344c94cdc17cce906c940bf7e3cc8a98e41d74c83a4445ba880fd15973ebc88f",
-  "APK_SHA256_SHORT": "344c94cdc17c",
-  "DOWNLOAD_URL": "https://github.com/chezgoulet/hermes-vox/releases/download/v0.9.1/hermes-vox-0.9.1.apk",
-  "RELEASE_TITLE": "Hermes Vox 0.9.1 \u2014 Presence"
+  "APK_SHA256": "6f3dde48e3c50d803cb3f8be7d02aab2c25a3e7f0657dad17e9f63a7416e6479",
+  "APK_SHA256_SHORT": "6f3dde48e3c5",
+  "DOWNLOAD_URL": "https://github.com/chezgoulet/hermes-vox/releases/download/v0.9.1.1/hermes-vox-0.9.1.1.apk",
+  "RELEASE_TITLE": "0.9.1.1 \u2014 the profile fix"
 }
