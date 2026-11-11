@@ -1,12 +1,12 @@
 {
-  "VERSION": "0.9.1.3",
-  "VERSION_CODE": "150",
-  "TAG": "v0.9.1.3",
+  "VERSION": "0.9.1.4",
+  "VERSION_CODE": "151",
+  "TAG": "v0.9.1.4",
   "RELEASE_DATE": "11 November 2026",
-  "APK_NAME": "hermes-vox-0.9.1.3.apk",
+  "APK_NAME": "hermes-vox-0.9.1.4.apk",
   "APK_SIZE_MB": "81.4",
-  "APK_SHA256": "b6f315e49d34f884dc43773380807b3713a905200f0cebb032f7bb0730dd29b8",
-  "APK_SHA256_SHORT": "b6f315e49d34",
-  "DOWNLOAD_URL": "https://github.com/chezgoulet/hermes-vox/releases/download/v0.9.1.3/hermes-vox-0.9.1.3.apk",
-  "RELEASE_TITLE": "0.9.1.3 \u2014 the cleanup cut"
+  "APK_SHA256": "bc9f11b7641759f1390c462a7a74207e67836ee772fd2f4239082c5ecd3b30c1",
+  "APK_SHA256_SHORT": "bc9f11b76417",
+  "DOWNLOAD_URL": "https://github.com/chezgoulet/hermes-vox/releases/download/v0.9.1.4/hermes-vox-0.9.1.4.apk",
+  "RELEASE_TITLE": "0.9.1.4 \u2014 out loud again"
 }
