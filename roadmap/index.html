@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#000000">
-<meta name="description" content="What Hermes Vox is now, where it is going, and why: 0.9.1 and the closed loop, 0.9.2 and Presence leaving alpha, the unnumbered ideas, and 1.0.">
+<meta name="description" content="What Hermes Vox is now, where it is going, and why: 0.9.1 shipped with Presence behind a switch, then a run of releases that each prove one part on a phone and take it out of alpha, a freeze, localisation, and 1.0.">
 <title>Roadmap — Hermes Vox</title>
 <link rel="canonical" href="https://hermesvox.org/roadmap/">
 <meta name="robots" content="index, follow">
@@ -265,17 +265,17 @@
     <ul class="answers">
       <li><b>What it is</b><span>An Android app that turns your Hermes agent into a phone call. The agent runs on your server; the phone does ears, voice and Presence.</span></li>
       <li><b>What you need</b><span>An Android phone, and a Hermes agent you run yourself on a computer or server.</span></li>
-      <li><b>Where it is</b><span>Version 0.9 shipped on 21 October 2026, with a same-day fix (0.9.0.1). Download it from hermesvox.org. Next is 0.9.1: Presence — one call, with the unfinished parts behind a switch.</span></li>
+      <li><b>Where it is</b><span>0.9.1 shipped on 7 November 2026, with three repairs since (the latest 0.9.1.4). Download it from hermesvox.org. The unfinished parts — Presence, continuous listening, turn-taking, phone tools, wake word, digital assistant — sit behind one alpha switch, off until you turn it on.</span></li>
       <li><b>Why Presence</b><span>Three problems: dead air while the agent thinks, a voice that is not <em>your</em> agent, and clumsy turn-taking.</span></li>
       <li><b>The one rule</b><span>The agent always wins. Presence may speak first. It never gets the last word.</span></li>
-      <li><b>What is next</b><span>0.9.1 is Presence: the layer, approvals answered by voice, and one switch over everything unfinished. 0.9.2 is where Presence leaves alpha. 1.0 has no date and waits for real use.</span></li>
+      <li><b>What is next</b><span>Seven releases, each proving one part on a phone and taking it out of alpha: measure the floor, then the smallest sets, then the hearing, the turn-taking and the being. Then first run, a freeze on the screens and words, and localisation. 1.0 has no date and waits for real use.</span></li>
     </ul>
   </section>
 
   <section id="roadmap">
     <p class="eyebrow">The roadmap</p>
     <h2>Where we’re going</h2>
-    <p class="lead">Each release answers a question the next one depends on. Open a stop to see what is in it.</p>
+    <p class="lead">Each release answers a question the next one depends on, and a feature leaves the alpha switch only when it has been proved on a phone. Releases have no dates: one ships when its checks are green, and what is still pending is said plainly.</p>
 
     <ol class="timeline">
       <li class="rel shipped">
@@ -293,13 +293,29 @@
               <li><b>Interruption that works.</b> The interrupt floor is measured from the reply’s own echo, so a quiet voice or a headset can still cut in.</li>
               <li><b>Presence while it works.</b> It holds a long gap in its own voice, with Quiet, Conversational and Chatty settings.</li>
               <li><b>A new voice engine.</b> The old Go core is gone; the turn engine is Kotlin end to end.</li>
-              <li><b>Sound cues.</b> Small sounds generated from the being’s own motion vocabulary.</li>
               <li><b>A wake-word preview.</b> A word to start hands-free: enrolment and storage only; nothing listens yet.</li>
             </ul>
-            <div class="subrelease">
-              <p class="subver">0.9.0.1 · the same-day fix</p>
-              <p class="small" style="margin:0">Pressing <span class="mono">/new</span> — the app’s new-session command — mid-call used to kill speech recognition. It now tears down and re-arms cleanly. Tested on a real phone, released the same day.</p>
-            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="rel shipped">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="relcard">
+          <button class="relhead" aria-expanded="true" aria-controls="r-091">
+            <span class="relver">0.9.1</span><span class="relname">Presence, and the week it taught us</span>
+            <span class="status">shipped</span><span class="chev" aria-hidden="true">−</span>
+          </button>
+          <div class="relbody" id="r-091">
+            <p class="relwhen">0.9.1 · 7 November 2026 · patches to 0.9.1.4</p>
+            <p class="relq">Does the being hold the call while the agent works — and is it honest when it cannot?</p>
+            <ul class="features">
+              <li><b>One call, no modes.</b> Presence becomes a layer on the call instead of a second product pretending to be one.</li>
+              <li><b>Approvals on the phone.</b> When your agent needs a sign-off it asks here, and silence is never a yes.</li>
+              <li><b>One switch over everything unfinished.</b> Alpha features, off by default: Presence, continuous listening, turn-taking, phone tools, wake word, digital assistant.</li>
+              <li><b>Profiles, sessions and commands</b>, rebuilt; settings regrouped and light mode drawn rather than tinted.</li>
+              <li><b>Then three repairs.</b> 0.9.1.3 fixed a short reply that held the call for two minutes and a voice that blamed a re-warmed engine; 0.9.1.4 fixed a call that spoke into the earpiece instead of out loud. Both were found by users, and the release notes say what each one cost.</li>
+            </ul>
           </div>
         </div>
       </li>
@@ -307,23 +323,18 @@
       <li class="rel current">
         <span class="dot" aria-hidden="true"></span>
         <div class="relcard">
-          <button class="relhead" aria-expanded="true" aria-controls="r-091">
-            <span class="relver">0.9.1</span><span class="relname">Presence</span>
-            <span class="status">in progress</span><span class="chev" aria-hidden="true">−</span>
+          <button class="relhead" aria-expanded="true" aria-controls="r-092">
+            <span class="relver">0.9.2</span><span class="relname">The floor, measured</span>
+            <span class="status">next</span><span class="chev" aria-hidden="true">−</span>
           </button>
-          <div class="relbody" id="r-091">
-            <p class="relwhen">In the build · not yet released</p>
-            <p class="relq">Does the being hold the call while the agent works — and is it honest when it cannot?</p>
+          <div class="relbody" id="r-092">
+            <p class="relwhen">The next release · ships when its checks are green</p>
+            <p class="relq">Can this phone hear you in real time — and can we tell “stable” from “working”?</p>
             <ul class="features">
-              <li><b>One call, no modes.</b> Presence becomes a layer on top of the call instead of a second product pretending to be one.</li>
-              <li><b>Approvals on the phone.</b> When your agent needs a sign-off, it asks here: what it wants and why. Answer by tapping or by saying yes or no. Silence is never a yes.</li>
-              <li><b>One switch over everything unfinished.</b> Alpha features, off by default, at the top of settings. Presence first among the sets, then continuous listening, turn-taking, phone tools, switching profiles and sessions.</li>
-              <li><b>VOX.md per profile.</b> Your agent writes how it talks, and the phone hands that to the local voice, so two agents do not blur into one.</li>
-              <li><b>Your agent’s sessions, from the phone.</b> Pick up a conversation you started at your desk.</li>
-              <li><b>The commands screen, rebuilt.</b> Grouped by what a command does, the filler gone, real state on the row.</li>
-              <li><b>Settings regrouped, every dialog redrawn.</b> Around twenty stock panels now draw on the app’s own ground, and light mode is drawn rather than tinted.</li>
-              <li><b>A command icon you choose.</b> Steve, Bill, Linus, Hermes, or Clanker — drawn in code, legible on both grounds.</li>
-              <li><b>Files handed to the agent</b>, and Vox as a share target. Reproducible builds, with F-Droid metadata prepared.</li>
+              <li><b>The instruments first.</b> The behaviour matrix, the performance baseline and the latency verdict become lines on the release checklist instead of documents nobody runs.</li>
+              <li><b>The recogniser, measured on the phone rather than the bench</b>, with the presence model’s cost beside it — and a decision on whether the presence model needs to be that heavy.</li>
+              <li><b>What already ships, proved.</b> The turn route and the operations line are what every user runs today; neither has had a device pass.</li>
+              <li><b>An evidence rule with teeth.</b> A number in a release note has to name the file, the count and the script behind it, or it does not ship.</li>
             </ul>
           </div>
         </div>
@@ -332,18 +343,132 @@
       <li class="rel planned">
         <span class="dot" aria-hidden="true"></span>
         <div class="relcard">
-          <button class="relhead" aria-expanded="true" aria-controls="r-092">
-            <span class="relver">0.9.2</span><span class="relname">Presence leaves alpha</span>
+          <button class="relhead" aria-expanded="true" aria-controls="r-093">
+            <span class="relver">0.9.3</span><span class="relname">The small sets graduate</span>
             <span class="status">planned</span><span class="chev" aria-hidden="true">−</span>
           </button>
-          <div class="relbody" id="r-092">
-            <p class="relwhen">After 0.9.1</p>
-            <p class="relq">With the layer on by default, does the call feel natural?</p>
+          <div class="relbody" id="r-093">
+            <p class="relwhen">After 0.9.2</p>
+            <p class="relq">Which of the unfinished features are actually finished?</p>
             <ul class="features">
-              <li><b>Presence leaves alpha.</b> The switch goes; the layer is on by default and the app says honestly whether the phone can carry it.</li>
-              <li><b>VOX.md leaves alpha with it.</b> A document about how the agent talks belongs to everyone, not only to testers.</li>
-              <li><b>Sessions leave alpha.</b> Browsing and resuming a conversation from the phone becomes an ordinary feature.</li>
-              <li><b>Tuned by the reports.</b> The numbers users hand back decide what the defaults become.</li>
+              <li><b>Phone tools leave the alpha switch.</b> The agent can set a timer, hand off a message, and ask before it uninstalls — proved one action at a time.</li>
+              <li><b>Digital assistant leaves it too.</b> The assistant gesture opens Vox instead of nothing.</li>
+              <li><b>The wake word comes out of the panel</b> until a detector exists: a switch that turns on nothing is worse than no switch.</li>
+              <li><b>Three sets left behind the switch</b>, and every one of them genuinely unfinished.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="rel planned">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="relcard">
+          <button class="relhead" aria-expanded="true" aria-controls="r-094">
+            <span class="relver">0.9.4</span><span class="relname">Hearing graduates</span>
+            <span class="status">planned</span><span class="chev" aria-hidden="true">−</span>
+          </button>
+          <div class="relbody" id="r-094">
+            <p class="relwhen">After 0.9.3</p>
+            <p class="relq">Can the microphone stay open and the recogniser keep up, on a phone, for a long call?</p>
+            <ul class="features">
+              <li><b>Continuous listening leaves the alpha switch</b> — the microphone stays open for the call, and the end of a turn becomes a judgement rather than a fixed pause.</li>
+              <li><b>The cost is re-measured</b> with the lane running, and the release holds to those numbers rather than to an older document.</li>
+              <li><b>Indoor and outdoor audio modes</b>, because they move the same thresholds and should move together.</li>
+              <li><b>What stays behind the switch, and why:</b> the semantic endpointer is English-only today, so it waits rather than shipping a bad guess for other languages.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="rel planned">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="relcard">
+          <button class="relhead" aria-expanded="true" aria-controls="r-095">
+            <span class="relver">0.9.5</span><span class="relname">Turn-taking graduates</span>
+            <span class="status">planned</span><span class="chev" aria-hidden="true">−</span>
+          </button>
+          <div class="relbody" id="r-095">
+            <p class="relwhen">After 0.9.4</p>
+            <p class="relq">Does it keep up with you mid-conversation?</p>
+            <ul class="features">
+              <li><b>An acknowledgement while you speak</b>, a yield when you interrupt, and a resume that does not repeat what you already heard.</li>
+              <li><b>Judged against a bar written for turn-taking</b> — acknowledgement rate, false yields, and resumes that repeat — not against the presence lines’ bar.</li>
+              <li><b>Leaves the alpha switch</b> when that bar is met on a long call.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="rel planned">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="relcard">
+          <button class="relhead" aria-expanded="true" aria-controls="r-096">
+            <span class="relver">0.9.6</span><span class="relname">The being graduates</span>
+            <span class="status">planned</span><span class="chev" aria-hidden="true">−</span>
+          </button>
+          <div class="relbody" id="r-096">
+            <p class="relwhen">After 0.9.5</p>
+            <p class="relq">Does Presence hold a conversation worth having — at a cost the phone can carry?</p>
+            <ul class="features">
+              <li><b>The model question is answered first</b>, then built: a smaller model, or most lines produced without one.</li>
+              <li><b>Tuned against the bar</b> — two thirds of offered lines spoken, nothing repeated, nothing landing after the reply starts, and a render under three seconds.</li>
+              <li><b>The last set leaves alpha</b>, and the switch goes with it, because nothing is left behind it.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="rel planned">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="relcard">
+          <button class="relhead" aria-expanded="true" aria-controls="r-097">
+            <span class="relver">0.9.7</span><span class="relname">The loop closes</span>
+            <span class="status">planned</span><span class="chev" aria-hidden="true">−</span>
+          </button>
+          <div class="relbody" id="r-097">
+            <p class="relwhen">After 0.9.6</p>
+            <p class="relq">Can someone who was not taught use it?</p>
+            <ul class="features">
+              <li><b>Approvals proved on a real gateway</b>: a request arrives, is answered by touch and by voice, and times out to no.</li>
+              <li><b>A stranger’s real task</b>, run once as acceptance rather than as a standing measurement.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="rel planned">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="relcard">
+          <button class="relhead" aria-expanded="true" aria-controls="r-098">
+            <span class="relver">0.9.8</span><span class="relname">First run, and the last words</span>
+            <span class="status">planned</span><span class="chev" aria-hidden="true">−</span>
+          </button>
+          <div class="relbody" id="r-098">
+            <p class="relwhen">After 0.9.7</p>
+            <p class="relq">Can the app explain itself, once, in the words it will keep?</p>
+            <ul class="features">
+              <li><b>First run</b>: gateway, microphone, models, Presence and a first call, honest when a step cannot be completed.</li>
+              <li><b>The last strings</b>, because every release since 0.9.2 has moved its own text into resources as it went.</li>
+              <li><b>The freeze starts here.</b> From this release, layout and wording stop moving — which is the only way the next one is possible.</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li class="rel planned">
+        <span class="dot" aria-hidden="true"></span>
+        <div class="relcard">
+          <button class="relhead" aria-expanded="true" aria-controls="r-010">
+            <span class="relver">0.10</span><span class="relname">Localisation</span>
+            <span class="status">planned</span><span class="chev" aria-hidden="true">−</span>
+          </button>
+          <div class="relbody" id="r-010">
+            <p class="relwhen">After the freeze</p>
+            <p class="relq">Can someone add a language without touching the app?</p>
+            <ul class="features">
+              <li><b>Language packs</b>, with French first, and plural and gender handled where a language needs them.</li>
+              <li><b>A right-to-left pass</b>, a warning when the speaking voice does not match the interface language, and speech recognition following the interface by default.</li>
+              <li><b>No new screens and no rewritten sentences.</b> If it needs one, it waits.</li>
             </ul>
           </div>
         </div>
@@ -360,14 +485,13 @@
             <p class="relwhen">Directions · no date</p>
             <p class="relq">Which of these make the app notably better?</p>
             <ul class="features">
-              <li><b>Beside your screen.</b> Vox in one pane of a split screen, or floating over whatever you are using, instead of taking the whole display.</li>
-              <li><b>Inside the app you are already in.</b> Select text anywhere and ask about it; the agent reads what is on screen when you ask it to, and only then.</li>
-              <li><b>Acting in other apps.</b> Behind its own marked switch and a permission per app, with a record of everything it did.</li>
+              <li><b>Beside your screen.</b> Vox in a pane, or floating over what you are using, instead of taking the whole display.</li>
+              <li><b>Inside the app you are already in.</b> Select text anywhere and ask about it; the agent reads the screen when you ask, and only then.</li>
+              <li><b>Acting in other apps.</b> Behind its own switch and a permission per app, with a record of everything it did.</li>
               <li><b>On the television.</b> A thin client on the big screen: the box shows and speaks, the host does the thinking.</li>
-              <li><b>Questions made of shapes.</b> The agent asks with a slider, a choice or a blank canvas; you answer by drawing.</li>
+              <li><b>Questions made of shapes.</b> The agent asks with a slider or a choice; you answer by drawing.</li>
               <li><b>A starship-console theme.</b> Because a phone can look like a bridge terminal if you want it to.</li>
             </ul>
-            <p class="small" style="margin:12px 0 0">New ideas from users join this list, and anything here can be pulled forward.</p>
           </div>
         </div>
       </li>
@@ -394,14 +518,14 @@
 
     <div class="card" style="margin-top:18px">
       <h3>Why this order</h3>
-      <p class="small" style="margin:0">You cannot judge a voice layer on a shaky call, so the basics come first. You cannot call an app finished until people have used it, so 1.0 comes last and carries no jobs. And a store listing is distribution, not proof of quality, so it runs alongside whatever release is ready.</p>
+      <p class="small" style="margin:0">You cannot judge a conversation on a call that drops, so the hearing comes first and is measured before anything is built on it. Then the unfinished features leave the alpha switch one at a time — the cheapest and most certain first — and each one is proved on a phone before it stops being optional. The last new screens are built before the words are frozen, because a sentence changed after translation starts is a sentence every translator revisits. You cannot call an app finished until people have used it, so 1.0 comes last and carries no jobs of its own.</p>
     </div>
   </section>
 
   <section id="er">
     <p class="eyebrow">The layer, not a mode</p>
     <h2>What is Presence?</h2>
-    <p class="lead">There used to be two modes: a plain call, and a second one with a small model on the phone. In 0.9.1 the mode picker goes away. There is one call, and Presence sits on top of it — on, and the phone helps; off, and nothing about the call changes.</p>
+    <p class="lead">There used to be two modes: a plain call, and a second one with a small model on the phone. In 0.9.1 the mode picker went away. There is one call, and Presence sits on top of it — on, and the phone helps; off, and nothing about the call changes.</p>
 
     <div class="grid2">
       <div class="card">
@@ -713,6 +837,7 @@
       <div class="row"><div class="v">0.8</div><div class="t"><b>Speed, and the beat.</b> The small model moved to the GPU, the “warm” voice stopped rebuilding itself, and the short opener was born.</div></div>
       <div class="row"><div class="v">0.8.1</div><div class="t"><b>Headset support.</b> A call could move to a Bluetooth, wired, or USB headset without breaking.</div></div>
       <div class="row"><div class="v">0.9</div><div class="t"><b>The HTTPS release.</b> Plain HTTP stopped working on purpose; interruption was rebuilt around the room; the voice engine became Kotlin. A same-day fix for <span class="mono">/new</span> followed (0.9.0.1).</div></div>
+      <div class="row"><div class="v">0.9.1</div><div class="t"><b>Presence, and the week it cost.</b> The being became a layer rather than a mode, with profiles, approvals and one alpha switch. Then two defects reached users — a short reply that held the call for two minutes, and a voice that blamed a re-warmed engine — and a third cut fixed a call that spoke into the earpiece instead of out loud. All three were found by users.</div></div>
     </div>
   </section>
 
